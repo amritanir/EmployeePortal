@@ -1,7 +1,10 @@
 package com.amrita.employeeportal.model;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Date;
 
+@Service
 public class Employee implements Comparable<Employee> {
 
     private String firstName;
