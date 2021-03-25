@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<TITLE>
+Employee Data
+</TITLE>
+<META charset="UTF-8">
+<SCRIPT>
+	var baseurl= "http://localhost:9000/employees";
+	function displayEmployees(){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET",baseurl,true);
+	xmlhttp.onreadystatechange=function(){
+	if(xmlhttp.readyState ===4 && xmlhttp.status ===200){
+	var employees = JSON.parse(xmlhttp.responseText);
+	var emptable = `<TABLE border='1'><tr><th>First Name</th><th>Last Name</th><th>Gender</th><th>Date Of Birth</th><th>Department</th></tr>`;
+	var main="";
+	for(i=0; i<employees.length; i++){
+		main += "<tr><td>"+employees[i].firstName+"</td><td>"+employees[i].lastName+"</td><td>"+employees[i].gender+"</td><td>"+employees[i].dateOfBirth+"</td><td>"+employees[i].department+"</td></tr>";
+	}	
+    var emptablebottom = "</TABLE>";
+	var employeetable = emptable + main + emptablebottom;
+	document.getElementById("employeedetails").innerHTML = employeetable;
+	}
+   };
+   xmlhttp.send();
+  }
+  window.onload = function(){
+   displayEmployees();
+ }
+</SCRIPT>
+</HEAD>
+<BODY>
+	<div id="employeedetails"></div>
+	<A href="./EmployeeRegistration.html">Go to Employee Registration</A>
+</BODY>
+</HTML>
