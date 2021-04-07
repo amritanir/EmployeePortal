@@ -16,6 +16,14 @@ public class Employee implements Comparable<Employee> {
     public Employee() {
     }
 
+    public Employee(String firstName, String lastName, String gender, Date dateOfBirth, String department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this. gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this. department = department;
+    }
+
     public String getFirstName() {
         return firstName;
     }
