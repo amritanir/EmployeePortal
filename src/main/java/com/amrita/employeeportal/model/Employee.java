@@ -1,16 +1,29 @@
 package com.amrita.employeeportal.model;
 
-import org.springframework.stereotype.Service;
-
+import javax.persistence.*;
 import java.util.Date;
 
-@Service
+@Entity
+@Table(name = "employees")
 public class Employee implements Comparable<Employee> {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(name = "gender")
     private String gender;
+
+    @Column(name = "dateOfBirth")
     private Date dateOfBirth;
+
+    @Column(name = "department")
     private String department;
 
     public Employee() {
@@ -22,6 +35,14 @@ public class Employee implements Comparable<Employee> {
         this. gender = gender;
         this.dateOfBirth = dateOfBirth;
         this. department = department;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

@@ -2,21 +2,21 @@
 	<HEAD>
 		<TITLE>Employee Portal</TITLE>
 	</HEAD>
-	<H1><CENTER>Employee Details</CENTER></H1>
+	<H1>Employee Details</H1>
 	<BODY bgcolor='lightskyblue'>
 		<FORM id="employeeForm">
 			<LABEL>First Name</LABEL>
-			<INPUT id="firstName" type='text' name='firstName' size='30' required/><BR><BR>
+			<INPUT id="firstName" type='text' name='firstName' size='30' required><BR><BR>
 			<LABEL>Last Name</LABEL>
-			<INPUT id="lastName" type='text' name='lastName' size='30' required/><BR><BR>
+			<INPUT id="lastName" type='text' name='lastName' size='30' required><BR><BR>
 			<LABEL>Gender</LABEL>
 			<SELECT id="gender" name="gender" form="employeeForm">
 				<OPTION value='Female'>Female</OPTION>
 				<OPTION value= 'Male'>Male</OPTION>
 				<OPTION value='Other'>Other</OPTION>
-			</SELECT>
+			</SELECT><BR><BR>
 			<LABEL>Date of Birth</LABEL>
-			<INPUT id="dob" type='date' name='dateOfBirth' value='2000-01-01'/><BR><BR>
+			<INPUT id="dob" type='date' name='dateOfBirth'><BR><BR>
 			<LABEL>Department</LABEL>
 			<SELECT id="department" name="department" form="employeeForm">
 				<OPTION value='Information Technology'>Information Technology</OPTION>
@@ -27,7 +27,7 @@
 				<OPTION value='Legal'>Legal</OPTION>
 				<OPTION value='Audit and Risk Management'>Audit and Risk Management</OPTION>
 				<OPTION value='Others'>Others</OPTION>
-			</SELECT>
+			</SELECT><BR><BR>
 			<BUTTON type='submit'>Submit</BUTTON>
 		</FORM>
 		<A href="./EmployeeData.html">View Employee Data</A>
@@ -48,7 +48,7 @@
 					"Content-Type": "application/json"
 				}
 				console.log(jsonFormData);
-				const response = await fetch("http://localhost:9000/employee", {
+				const response = await fetch("http://localhost:9000/api/v1/employee", {
 					method: "POST",
 					headers: headers,
 					body: JSON.stringify(jsonFormData)

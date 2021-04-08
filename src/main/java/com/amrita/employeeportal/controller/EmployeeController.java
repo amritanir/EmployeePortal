@@ -9,20 +9,38 @@ import java.util.*;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/api/v1")
 public class EmployeeController {
+
+    public EmployeeController(){
+    }
 
     @Autowired
     private IEmployeeService employeeService;
 
     @GetMapping("/employees")
-    @ResponseBody
     public List<Employee> getEmployees() {
         return employeeService.getEmployees();
     }
 
+    @GetMapping("/employees/{id}")
+    public Employee getEmployeeById(@PathVariable(value = "id") int employeeId) {
+        return employeeService.getEmployee(employeeId);
+    }
+
     @PostMapping("/employee")
-    public void addEmployee(@RequestBody Employee employee)
+    public Employee addEmployee(@RequestBody Employee employee)
     {
-        employeeService.addEmployee(employee);
+        return employeeService.addEmployee(employee);
+    }
+
+    @PutMapping("/employees/{id}")
+    public boolean updateEmployee(@PathVariable(value = "id") int employeeId, @RequestBody Employee employeeDetails) {
+        return employeeService.updateEmployee(employeeId, employeeDetails);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public boolean deleteEmployee(@PathVariable(value = "id") int employeeId) {
+        return employeeService.deleteEmployee(employeeId);
     }
 }
